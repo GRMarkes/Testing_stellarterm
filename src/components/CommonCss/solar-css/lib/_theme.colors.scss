@@ -2,8 +2,10 @@
 @function whiten($color, $percent){
   @return mix(white, $color, $percent);
 }
-@function blacken($color, $percent){
-  @return mix(black, $color, $percent);
+// Correct way to ensure $percent is treated as a percentage
+@function blacken($color, $percent) {
+  $percent-as-percentage: $percent + 0%;
+  @return mix(black, $color, $percent-as-percentage);
 }
 
 // These should only be used to derive main colors

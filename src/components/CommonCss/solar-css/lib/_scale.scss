@@ -62,22 +62,18 @@ $s-scale-3: $s-scale-base1Px
 //         + px;
 $s-scale-4: 16px;
 
+@use "sass:math";
 // base1/scale^-1
-$s-scale-5: $s-scale-base1Px
-        / $s-scale-ratio
+$s-scale-5: math.div($s-scale-base1Px, $s-scale-ratio)
         + px;
 
 // base2*scale^-2
-$s-scale-6: $s-scale-base2Px
-        / $s-scale-ratio
-        / $s-scale-ratio
-        + px;
+        $s-scale-6: math.div(math.div($s-scale-base2Px, $s-scale-ratio), $s-scale-ratio) + px;
+        
 
 // base1*scale^-2
-$s-scale-7: $s-scale-base1Px
-        / $s-scale-ratio
-        / $s-scale-ratio
-        + px;
+$s-scale-7: math.div(math.div($s-scale-base1Px, $s-scale-ratio), $s-scale-ratio) + px;
+
 
 
 
@@ -107,26 +103,13 @@ $s-scale-up5raw: $s-scale-ratio
         * $s-scale-ratio
         * $s-scale-ratio
         * $s-scale-ratio;
-$s-scale-down1raw: 1
-        / $s-scale-ratio;
-$s-scale-down2raw: 1
-        / $s-scale-ratio
-        / $s-scale-ratio;
-$s-scale-down3raw: 1
-        / $s-scale-ratio
-        / $s-scale-ratio
-        / $s-scale-ratio;
-$s-scale-down4raw: 1
-        / $s-scale-ratio
-        / $s-scale-ratio
-        / $s-scale-ratio
-        / $s-scale-ratio;
-$s-scale-down5raw: 1
-        / $s-scale-ratio
-        / $s-scale-ratio
-        / $s-scale-ratio
-        / $s-scale-ratio
-        / $s-scale-ratio;
+
+        $s-scale-down1raw: math.div(1, $s-scale-ratio);
+        $s-scale-down2raw: math.div(math.div(1, $s-scale-ratio), $s-scale-ratio);
+        $s-scale-down3raw: math.div(math.div(math.div(1, $s-scale-ratio), $s-scale-ratio), $s-scale-ratio);
+        $s-scale-down4raw: math.div(math.div(math.div(math.div(1, $s-scale-ratio), $s-scale-ratio), $s-scale-ratio), $s-scale-ratio);
+        $s-scale-down5raw: math.div(math.div(math.div(math.div(math.div(1, $s-scale-ratio), $s-scale-ratio), $s-scale-ratio), $s-scale-ratio), $s-scale-ratio);
+        
 
 $s-scale-up1: $s-scale-up1raw + em;
 $s-scale-up2: $s-scale-up2raw + em;
