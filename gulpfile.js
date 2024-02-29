@@ -6,12 +6,15 @@ const babel = require('gulp-babel');
 const imagemin = require('gulp-imagemin');
 const svgToMiniDataURI = require('mini-svg-data-uri');
 
+
 const $ = {
-    sass: require('gulp-sass')(require('node-sass')),
+    sass: require('gulp-sass')(require('sass')), // Updated to use 'sass' (Dart Sass)
     useref: require('gulp-useref'),
     uglify: require('gulp-uglify'),
     inlineSource: require('gulp-inline-source-html'),
 };
+
+
 const browserify = require('browserify');
 const watchify = require('watchify');
 const babelify = require('babelify');
